@@ -2,6 +2,8 @@ import { useRouter } from "next/dist/client/router";
 import React, { useEffect, useState } from "react";
 import tw from "tailwind-styled-components";
 import Map from "./components/Map";
+import RideSelector from "./components/RideSelector";
+import Link from "next/link";
 
 const Confirm = () => {
   const router = useRouter();
@@ -47,11 +49,21 @@ const Confirm = () => {
 
   return (
     <Wrapper>
+      <ButtonContainer>
+        <Link href="/search" passHref>
+          <BackButton src="https://img.icons8.com/ios-filled/50/000000/left.png" />
+        </Link>
+      </ButtonContainer>
       <Map
         pickupCoordinates={pickupCoordinates}
         dropoffCoordinates={dropoffCoordinates}
       />
-      <ActionItems></ActionItems>
+      <RideContainer>
+        <RideSelector />
+        <ConfirmButtonSelector>
+          <ConfirmButton>Confirm UberX</ConfirmButton>
+        </ConfirmButtonSelector>
+      </RideContainer>
     </Wrapper>
   );
 };
@@ -62,6 +74,22 @@ const Wrapper = tw.div`
   flex flex-col h-screen
 `;
 
-const ActionItems = tw.div`
-  flex-1 p-4
+const ButtonContainer = tw.div`
+  absolute z-10 bg-white rounded-full p-1 m-2
+`;
+
+const BackButton = tw.img`
+  h-8
+`;
+
+const RideContainer = tw.div`
+  flex-1 flex flex-col h-1/2
+`;
+
+const ConfirmButtonSelector = tw.div`
+  border-t-2
+`;
+
+const ConfirmButton = tw.div`
+  bg-black text-white m-4 py-4 text-center text-xl
 `;

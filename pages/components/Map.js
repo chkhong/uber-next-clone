@@ -37,7 +37,7 @@ const Map = (props) => {
 };
 
 const Wrapper = tw.div`
-  bg-gray-500 flex-1
+  bg-gray-500 flex-1 h-1/2
 `;
 
 export default Map;
